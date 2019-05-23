@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block daniela %}
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">
+            <i class="fa fa-laptop"></i> Cadastro de Veículos </h3>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="/cars/">Home</a>
+            </li>
+            <li>
+                <i class="fa fa-laptop"></i> Cadastro </li>
+        </ol>
+    </div>
+</div>
+<div class="col-lg-6">
+    <section class="panel">
+        <div class="panel-body">
+            <form action="/cars/cars/form/" method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="{{form.model.id_for_label}}">{{form.model.label}}</label>
+                    {{form.model}}
+                </div>
+                <div class="form-group">
+                    <label for="{{form.color.id_for_label}}">{{form.color.label}}</label>
+                    {{form.color}}
+                </div>
+                <div class="form-group">
+                    <label for="{{form.board.id_for_label}}"> {{form.board.label}} </label>
+                    {{form.board}}
+                </div>
+                <div class="form-group">
+                    <label for="{{form.chassis.id_for_label}}"> {{form.chassis.label}} </label>
+                    {{form.chassis}}
+                </div>
+                <div class="form-group">
+                    <label for="{{form.year.id_for_label}}"> {{form.year.label}} </label>
+                    {{form.year}}
+                </div>
+                <div class="form-group">
+                    <label for="{{form.manufacturer.id_for_label}}"> {{form.manufacturer.label}} </label>
+                    {{form.manufacturer}}
+                </div>
+                <div class="form-group">
+                    <label for="{{form.fuel.id_for_label}}"> {{form.fuel.label}} </label>
+                    {{form.fuel}}
+                </div>
+
+
+                <button type="submit" class="btn btn-primary"> Enviar </button>
+                <a href = "/cars/cars/" class="btn btn-primary"> Voltar </a>
+            </form>
+        </div>
+    </section>
+</div>
+{% endblock %}

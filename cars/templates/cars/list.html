@@ -1,0 +1,91 @@
+{% extends "base.html" %} {% block daniela %}
+<div class="row">
+  <div class="col-lg-12">
+
+    <h3 class="page-header">
+      <i class="fa fa-laptop"></i> Listagem de Carros
+    </h3>
+
+    <ol class="breadcrumb">
+      <li>
+        <i class="fa fa-home"></i>
+        <a href="/cars/">Home</a>
+      </li>
+      <li>
+        <i class="fa fa-laptop"></i> Carros </li>
+    </ol>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p>
+          Carros <a href="/cars/cars/form" style="float:right;">Adicionar</a>
+        </p>
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th> Nome do Carro </th>
+                <th> Cor </th>
+                <th> Placa </th>
+                <th> Chassis </th>
+                <th> Ano </th>
+                <th> manufacturer</th>
+                <th> Opções </th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for vehicle in vehicles %}
+              <tr>
+                <td>{{vehicle.model}}</td>
+                <td>{{vehicle.color}}</td>
+                <td>{{vehicle.board}}</td>
+                <td>{{vehicle.chassis}}</td>
+                <td>{{vehicle.year}}</td>
+                <td>
+                  <a href="/cars/cars/{{vehicle.id}}">Ver</a>
+                </td>
+                <td>
+                  <a href="/cars/cars/{{vehicle.id}}/edit/">Editar</a>
+                </td>
+                <td>
+                  <a href="/cars/cars/delete/{{vehicle.id}}">Excluir</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="vehicle-list">
+        <div class="row">
+          <div class="col-md-12">
+            <form action="/cars/cars/" method="post">
+              {% csrf_token %}
+              <div class="form-group col-md-4">
+                <select id="inputState" name="select">
+                  <option value="" disabled selected>Selecione</option>
+                  <option value="model">Nome do Carro</option>
+                  <option value="color">Cor</option>
+                  <option value="board">Placa</option>
+                  <option value="chassis">Chassis</option>
+                  <option value="year">Ano</option>
+                </select>
+                <button type="submit" class="submit">Ok</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

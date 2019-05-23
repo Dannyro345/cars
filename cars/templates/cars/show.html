@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block daniela %}
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">
+            <i class="fa fa-laptop"></i> Informações sobre Carro </h3>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="/cars/cars/"> Voltar </a>
+            </li>
+            <li>
+                <i class="fa fa-laptop"> Informações do Carro </i>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 ">
+        <div>
+            <label> Modelo do Carro: </label>
+            {{vehicle.model}}
+        </div>
+        <div>
+            <label> Cor: </label>
+            {{vehicle.color}}
+        </div>
+        <div>
+            <label> Placa: </label>
+            {{vehicle.board}}
+        </div>
+        <div>
+            <label> Chassis: </label>
+            {{vehicle.chassis}}
+        </div>
+        <div>
+            <label> Ano: </label>
+            {{vehicle.year}}
+        </div>
+    </div>
+</div>
+{% endblock %}

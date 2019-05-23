@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block daniela %}
+<div class="row">
+  <div class="col-lg-12">
+
+    <h3 class="page-header">
+      <i class="fa fa-laptop"></i> Listagem de Combustível
+    </h3>
+
+    <ol class="breadcrumb">
+      <li>
+        <i class="fa fa-home"></i>
+        <a href="/cars/">Home</a>
+      </li>
+      <li>
+        <i class="fa fa-laptop"></i> Combustível </li>
+    </ol>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p>
+          Combustível <a href="/cars/fuel/form" style="float:right;"> Adicionar </a>
+        </p>
+      </div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th> Tipo de Combustível </th>
+                <th> Opções </th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for fuel in fuel %}
+              <tr>
+                <td>{{fuel.type_fuel}}</td>
+                <td>
+                  <a href="/cars/fuel/{{fuel.id}}">Ver</a>
+                </td>
+                <td>
+                  <a href="/cars/fuel/{{fuel.id}}/edit/">Editar</a>
+                </td>
+                <td>
+                  <a href="/cars/fuel/delete/{{fuel.id}}">Excluir</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
