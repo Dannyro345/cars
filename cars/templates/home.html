@@ -1,16 +1,30 @@
 {% extends "base.html" %} {% block daniela %}
+{% load static %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'assets/img/carro.jpg' %}" class="card-img-top" alt="...">
+        </div>
+    </div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1></h1>
-</body>
-</html>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="typo-line">
+            <p class="category">Dani's Veiculos</p>
+            
+            <blockquote>
+                <p>
+                    Os melhores veiculos, você encontra aqui, com muito conforto e qualidade para você e sua familia.
+                </p>
+                <small>
+                    Dani's Veiculos
+                </small>
+                
+            </blockquote>
+        </div>
+    </div>
+</div>
+<p>Você é o visitante número: {{ num_visits }}{% if num_visits == 1 %} user{% else %} {% endif %}</p>
 
 {% endblock %}

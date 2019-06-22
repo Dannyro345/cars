@@ -3,7 +3,7 @@
   <div class="col-lg-12">
 
     <h3 class="page-header">
-      <i class="fa fa-laptop"></i> Listagem de Carros
+      Listagem de Carros
     </h3>
 
     <ol class="breadcrumb">
@@ -37,7 +37,8 @@
                 <th> Placa </th>
                 <th> Chassis </th>
                 <th> Ano </th>
-                <th> manufacturer</th>
+                <th> Fabricante</th>
+                <th> Combustível</th>
                 <th> Opções </th>
                 <th></th>
               </tr>
@@ -50,6 +51,8 @@
                 <td>{{vehicle.board}}</td>
                 <td>{{vehicle.chassis}}</td>
                 <td>{{vehicle.year}}</td>
+                <td>{{vehicle.manufacturer}}</td>
+                <td>{{vehicle.fuel}}</td>
                 <td>
                   <a href="/cars/cars/{{vehicle.id}}">Ver</a>
                 </td>
@@ -70,7 +73,7 @@
           <div class="col-md-12">
             <form action="/cars/cars/" method="post">
               {% csrf_token %}
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-4 ">
                 <select id="inputState" name="select">
                   <option value="" disabled selected>Selecione</option>
                   <option value="model">Nome do Carro</option>

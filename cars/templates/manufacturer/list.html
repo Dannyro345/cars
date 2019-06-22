@@ -3,7 +3,7 @@
   <div class="col-lg-12">
 
     <h3 class="page-header">
-      <i class="fa fa-laptop"></i> Listagem de Fabricantes
+      Listagem de Fabricantes
     </h3>
 
     <ol class="breadcrumb">
@@ -23,6 +23,18 @@
       <div class="panel-heading">
         <p>Fabricantes <a href="/cars/manufacturer/form" style="float:right;">Adicionar</a></p>
       </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div>
+            <form action="/cars/manufacturer/" method="POST">
+              {% csrf_token %}
+              <input type="text" id="brand" name="brand" placeholder="Nome da Marca">
+              <button type="submit">ok</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <!-- /.panel-heading -->
       <div class="panel-body">
         <div class="table-responsive">

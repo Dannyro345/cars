@@ -2,11 +2,19 @@ from django.shortcuts import render, redirect
 from  .models import Vehicle, Manufacturer, Fuel
 from .forms import VehicleForm, ManufacturerForm, FuelForm
 
+
 # Create your views here.
 
-def home(request):
-    return render (request, 'home.html', {})
+def home(request): 
+    num_user = Vehicle.objects.count()
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
 
+    context = {
+        'num_user': num_user,
+        'num_visits': num_visits,
+    }
+    return render (request, 'home.html', context = context) 
 def vehicle_list(request):
     if (request.method == 'POST'):
         form = request.POST.get('select')
@@ -14,7 +22,7 @@ def vehicle_list(request):
         return render(request, 'cars/list.html', {'vehicles':vehicles})
     else:
         vehicles = Vehicle.objects.all()
-        return render(request, 'cars/list.html', {'vehicles':vehicles})       
+        return render(request, 'cars/list.html', {'vehicles':vehicles})      
 def vehicle_show(request, vehicle_id):
     vehicle = Vehicle.objects.get(pk = vehicle_id)
     return render(request, 'cars/show.html', {'vehicle': vehicle})
@@ -32,7 +40,7 @@ def vehicle_edit (request, vehicle_id):
     if (request.method == 'POST'):
         vehicle = Vehicle.objects.get(pk=vehicle_id)
         form = VehicleForm(request.POST, instance = vehicle)
-        if (form.is_valid):
+        if (form.is_valid()):
             form.save()
             return redirect ('/cars/cars/')
         else:
@@ -46,9 +54,12 @@ def vehicle_delete (request, vehicle_id):
     vehicle.delete()
     return redirect('/cars/cars/')
 
-
 def manufacturer_list(request):
-    manufacturer = Manufacturer.objects.all()
+    if (request.method == 'POST'):
+        brand = request.POST.get('brand')
+        manufacturer = Manufacturer.objects.all().filter(brand__icontains = brand)
+    else:
+        manufacturer = Manufacturer.objects.all()
     return render(request, 'manufacturer/list.html', {'manufacturer': manufacturer})
 def manufacturer_show(request, manufacturer_id):
     manufacturer = Manufacturer.objects.get(pk = manufacturer_id)
@@ -64,8 +75,8 @@ def manufacturer_form (request):
 def manufacturer_edit (request, manufacturer_id):
     if (request.method == 'POST'):
         manufacturer = Manufacturer.objects.get(pk=manufacturer_id)
-        form = ManufacturerForm(request.POST, instance = Manufacturer)
-        if (form.is_valid):
+        form = ManufacturerForm(request.POST, instance = manufacturer)
+        if (form.is_valid()):
             form.save()
             return redirect ('/cars/manufacturer/')
         else:
@@ -79,11 +90,10 @@ def manufacturer_delete (request, manufacturer_id):
     manufacturer.delete()
     return redirect('/cars/manufacturer/')
 
-
 def fuel_list(request):
     fuel = Fuel.objects.all()
     return render(request, 'fuel/list.html', {'fuel': fuel})
-def fuel_show(request, manufacturer_id):
+def fuel_show(request, fuel_id):
     fuel = Fuel.objects.get(pk = fuel_id)
     return render(request, 'fuel/show.html', {'fuel': fuel })
 def fuel_form (request):
@@ -97,8 +107,8 @@ def fuel_form (request):
 def fuel_edit (request, fuel_id):
     if (request.method == 'POST'):
         fuel = Fuel.objects.get(pk=fuel_id)
-        form = FuelForm(request.POST, instance = Fuel)
-        if (form.is_valid):
+        form = FuelForm(request.POST, instance = fuel)
+        if (form.is_valid()):
             form.save()
             return redirect ('/cars/fuel/')
         else:
@@ -111,3 +121,4 @@ def fuel_delete (request, fuel_id):
     fuel = Fuel.objects.get(pk= fuel_id)
     fuel.delete()
     return redirect('/cars/fuel/')
+
