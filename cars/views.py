@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from  .models import Vehicle, Manufacturer, Fuel
 from .forms import VehicleForm, ManufacturerForm, FuelForm
-
+from django.contrib import messages
 
 # Create your views here.
 
@@ -31,6 +31,7 @@ def vehicle_form (request):
     if(request.method == 'POST'):
         form = VehicleForm(request.POST)
         form.save()
+        messages.add_message(request, messages.INFO, 'Hello world.')
         return redirect('/cars/cars/')
 
     else:    

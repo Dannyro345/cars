@@ -23,7 +23,8 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <p>
-          Carros <a href="/cars/cars/form" style="float:right;">Adicionar</a>
+          Carros
+          <a href="/cars/cars/form" style="float:right;">Adicionar</a>
         </p>
       </div>
       <!-- /.panel-heading -->
@@ -90,5 +91,13 @@
       </div>
     </div>
   </div>
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
 </div>
+
 {% endblock %}
