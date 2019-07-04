@@ -47,12 +47,12 @@
     -->
 
             <div class="sidebar-wrapper">
-    
+
                 <div class="logo">
                     <a href="/cars/" class="simple-text">
                         Dani's Veiculos
                     </a>
-                    
+
                 </div>
                 <ul class="nav">
                     <li class="">
@@ -79,6 +79,12 @@
                             <p> Combustível </p>
                         </a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="/accounts/logout/">Logout</a>
+                    </li>
+                    {% endif %}
+
                     <li class="active-pro">
                         <a href="/cars/">
                             <i class="pe-7s-rocket"></i>
@@ -88,7 +94,7 @@
                 </ul>
                 </ul>
             </div>
-           
+
         </div>
 
         <div class="main-panel">
@@ -107,17 +113,17 @@
 
                 </div>
             </nav>
-            
+
             <div class="content">
                 <div class="container-fluid">
                     {% block daniela %}
-                    
+
                     {% endblock %}
                 </div>
             </div>
         </div>
     </div>
-    
+
     <footer class="footer">
         <div class="container-fluid">
             <p class="copyright pull-right">

@@ -1,0 +1,21 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: dannyro345@gmail.com
+Date: Tue, 04 Julh 2019 12:43:05 -0000
+Message-ID: <156146658525.4683.1203479381665934122@capau-111316>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/reset/MQ/50n-794b1459497cbe0ed399/
+
+Your username, in case you've forgotten: wsv
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team

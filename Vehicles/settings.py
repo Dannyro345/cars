@@ -27,9 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# Login 
-LOGIN_REDIRECT_URL = '/cars'
-LOGOUT_REDIRECT_URL = '/home'
+# Login e logout
+LOGIN_REDIRECT_URL = '/cars/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+# my_project/settings.py
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 # Application definition
 
